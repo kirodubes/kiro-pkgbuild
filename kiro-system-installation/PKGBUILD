@@ -1,11 +1,11 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=kiro-calamares-config
-_pkgname=kiro-calamares-config
+pkgname=kiro-system-installation
+_pkgname=kiro-system-installation
 _destname1="/etc"
-_destnamescript="/usr/bin"
+_destname2="/usr"
 pkgver=25.05
-pkgrel=10
-pkgdesc="calamares config for kiro"
+pkgrel=11
+pkgdesc="system installation config for kiro"
 arch=('any')
 url="https://github.com/kirodubes/${_pkgname}"
 license=('GPL3')
@@ -19,6 +19,6 @@ install='readme.install'
 package() {
 	mkdir -p "${pkgdir}${_destname1}"
 	cp -r "${srcdir}/${_pkgname}/${_destname1}"* "${pkgdir}"
-	mkdir -p "${pkgdir}${_destnamescript}"
-	cp -r "${srcdir}/${_pkgname}/etc/calamares/pkgbuild/build-calamares" "${pkgdir}${_destnamescript}"
+	mkdir -p "${pkgdir}${_destname2}"
+	cp -r "${srcdir}/${_pkgname}/${_destname2}"* "${pkgdir}"
 }
