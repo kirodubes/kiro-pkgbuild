@@ -3,9 +3,15 @@
 
 workdir=$(pwd)
 
-rm -r calamares/pkgbuild/src
-rm -r calamares/pkgbuild/pkg
-rm calamares/pkgbuild/calamares-3*
+#!/bin/bash
+
+[[ -d calamares/pkgbuild/src ]] && rm -r calamares/pkgbuild/src
+[[ -d calamares/pkgbuild/pkg ]] && rm -r calamares/pkgbuild/pkg
+
+for file in calamares/pkgbuild/calamares-3*; do
+    [[ -f "$file" ]] && rm "$file"
+done
+
 
 # Below command will backup everything inside the project folder
 git add --all .
