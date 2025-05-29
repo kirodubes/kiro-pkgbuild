@@ -3,39 +3,55 @@
 
 workdir=$(pwd)
 
-#!/bin/bash
+# Colors
+cyan=$(tput setaf 6)
+green=$(tput setaf 2)
+red=$(tput setaf 1)
+reset=$(tput sgr0)
 
-[[ -d calamares/pkgbuild/src ]] && rm -r calamares/pkgbuild/src
-[[ -d calamares/pkgbuild/pkg ]] && rm -r calamares/pkgbuild/pkg
+echo "${cyan}1. Cleaning up build folders and old files...${reset}"
+
+[[ -d calamares/pkgbuild/src ]] && {
+    echo "${green}Removing src folder...${reset}"
+    rm -r calamares/pkgbuild/src
+}
+
+[[ -d calamares/pkgbuild/pkg ]] && {
+    echo "${green}Removing pkg folder...${reset}"
+    rm -r calamares/pkgbuild/pkg
+}
 
 for file in calamares/pkgbuild/calamares-3*; do
-    [[ -f "$file" ]] && rm "$file"
+    [[ -f "$file" ]] && {
+        echo "${green}Removing $file...${reset}"
+        rm "$file"
+    }
 done
 
+echo
+echo "${cyan}2. Backing up changes with Git...${reset}"
 
-# Below command will backup everything inside the project folder
 git add --all .
 
-# Committing to the local repository with a message containing the time details and commit text
-
+echo "${green}Staging complete. Committing changes...${reset}"
 git commit -m "update"
 
-# Push the local files to github
+echo
+echo "${cyan}3. Pushing to GitHub...${reset}"
 
 if grep -q main .git/config; then
-	echo "Using main"
-		git push -u origin main
-fi
-
-if grep -q master .git/config; then
-	echo "Using master"
-		git push -u origin master
+    echo "${green}Branch: main${reset}"
+    git push -u origin main
+elif grep -q master .git/config; then
+    echo "${green}Branch: master${reset}"
+    git push -u origin master
+else
+    echo "${red}No main or master branch found in .git/config${reset}"
 fi
 
 echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
+echo "${cyan}4. Script complete:${reset}"
+echo "${cyan}##############################################################${reset}"
+echo "${cyan}###################  $(basename "$0") done${reset}"
+echo "${cyan}##############################################################${reset}"
 echo
