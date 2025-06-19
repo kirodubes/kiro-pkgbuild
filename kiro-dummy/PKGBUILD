@@ -1,24 +1,23 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=kiro-system-installation
+pkgname=kiro-dummy-git
 _pkgname=kiro-system-installation
-_destname1="/etc"
-_destname2="/usr"
+_destname1="/etc/skel/"
+_licensedir="/usr/share/kiro/licenses/"
 pkgver=25.06
-pkgrel=03
-pkgdesc="system installation config for kiro"
+pkgrel=01
+pkgdesc="dummy package"
 arch=('any')
 url="https://github.com/kirodubes/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
 depends=()
+optdepends=()
+replace=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+$url")
 sha256sums=('SKIP')
 install='readme.install'
 package() {
-	mkdir -p "${pkgdir}${_destname1}"
-	cp -r "${srcdir}/${_pkgname}/${_destname1}"* "${pkgdir}"
-	mkdir -p "${pkgdir}${_destname2}"
-	cp -r "${srcdir}/${_pkgname}/${_destname2}"* "${pkgdir}"
+echo
 }
