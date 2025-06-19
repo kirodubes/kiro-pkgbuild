@@ -30,7 +30,7 @@ echo "Updated PKGBUILD: pkgver=${NEW_VER}, pkgrel=${NEW_REL}"
 # CONFIGURATION
 CHROOT="$HOME/Documents/chroot"
 DEST_DIR="/home/erik/KIRO/kiro_repo/x86_64/"
-CHOICE=2  # Default to makepkg
+CHOICE=1  # Default to clean chroot - if you run the script first - example - make-chroot-root-environment.sh
 MAKEPKG_LIST=()  # Add package names here that should always use makepkg
 
 # GET DIRECTORY INFORMATION
