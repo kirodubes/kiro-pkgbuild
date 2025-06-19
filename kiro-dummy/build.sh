@@ -40,7 +40,7 @@ PKG_NAME=$(basename "$PWD_PATH")
 # Override CHOICE if current package is in MAKEPKG_LIST
 for pkg in "${MAKEPKG_LIST[@]}"; do
   if [[ "$PKG_NAME" == "$pkg" ]]; then
-    CHOICE=2
+    CHOICE=1
     break
   fi
 done

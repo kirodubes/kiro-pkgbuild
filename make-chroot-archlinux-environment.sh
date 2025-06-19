@@ -21,7 +21,7 @@ echo "################################################################"
 sudo pacman -S --needed --noconfirm devtools namcap archlinux-tools
 
 # Define constants
-CHROOT_DIR="$HOME/Documents/chroot-archlinux"
+CHROOT_DIR="$HOME/Documents/chroot"
 PACMAN_CONF=$installed_dir/"pacman.conf"
 MIRRORLIST="/etc/pacman.d/chaotic-mirrorlist"
 GPG_CONF=$installed_dir"/gpg.conf"
