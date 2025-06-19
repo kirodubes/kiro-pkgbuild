@@ -28,7 +28,7 @@ echo "Updated PKGBUILD: pkgver=${NEW_VER}, pkgrel=${NEW_REL}"
 
 
 # CONFIGURATION
-CHROOT="$HOME/Documents/chroot-archlinux"
+CHROOT="$HOME/Documents/chroot"
 DEST_DIR="/home/erik/KIRO/kiro_repo/x86_64/"
 CHOICE=2  # Default to makepkg
 MAKEPKG_LIST=()  # Add package names here that should always use makepkg
@@ -40,7 +40,7 @@ PKG_NAME=$(basename "$PWD_PATH")
 # Override CHOICE if current package is in MAKEPKG_LIST
 for pkg in "${MAKEPKG_LIST[@]}"; do
   if [[ "$PKG_NAME" == "$pkg" ]]; then
-    CHOICE=1
+    CHOICE=2
     break
   fi
 done
