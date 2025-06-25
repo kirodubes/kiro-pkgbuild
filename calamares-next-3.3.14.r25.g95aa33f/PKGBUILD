@@ -2,7 +2,7 @@ pkgname=calamares-next
 _pkgname=calamares
 # change number in prepare as well
 pkgver=3.3.14.r25.g95aa33f  # placeholder; will be auto-generated
-pkgrel=11
+pkgrel=13
 pkgdesc='Distribution-independent installer framework - latest git version'
 arch=('i686' 'x86_64')
 url="https://github.com/calamares/calamares"
@@ -39,6 +39,7 @@ makedepends=(
 	'cmake'
 	'extra-cmake-modules'
 	'git'
+	'fakeroot'
 	'ninja'
 	'python-jsonschema'
 	'python-pyaml'
@@ -55,7 +56,7 @@ source=("calamares::git+https://github.com/calamares/calamares.git"
         "calamares_polkit"
 	"calamares-wrapper")
 sha256sums=('SKIP'
-            '7c6290dbfdfdffeb061eaa077e489d97614210d4d6138572d160dbf7df4eff8f'
+            '31a07d76d5c8ffee0e88bf41119c875fafb2e0bcefdae945e748e3f9e6803d6d'
             '966c5f0834039dc6a7529e75f70417ba2510b1e643ffb49fd25855ce9dc244b4'
             'e4c9b9601020f2362311b9776de1aa363f6ee5d1d78a4b171ba2630644819f5b')
 
@@ -76,6 +77,8 @@ build() {
 
 	cmake -S . -B build \
 		-G Ninja \
+		-DCMAKE_BUILD_RPATH_USE_ORIGIN=ON \
+		-DCMAKE_SKIP_RPATH=ON \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
