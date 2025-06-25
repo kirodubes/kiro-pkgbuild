@@ -2,7 +2,7 @@ pkgname=calamares
 _pkgname=calamares
 # change number in prepare as well
 pkgver=3.3.14.r25.g95aa33f  # placeholder; will be auto-generated
-pkgrel=07
+pkgrel=08
 pkgdesc='Distribution-independent installer framework - latest git version'
 arch=('i686' 'x86_64')
 url="https://github.com/calamares/calamares"
@@ -51,7 +51,7 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
 source=("calamares::git+https://github.com/calamares/calamares.git"
-        "cal-kiro-debugging.desktop"
+        "cal-kiro.desktop"
         "calamares_polkit")
 sha256sums=('SKIP'
             '7c38fc1461307e4aff9b72922c6406789776a8252521618c5dcbe85beccb04f5'
