@@ -2,7 +2,7 @@ pkgname=calamares
 _pkgname=calamares
 # change number in prepare as well
 pkgver=3.3.14.r25.g95aa33f  # placeholder; will be auto-generated
-pkgrel=06
+pkgrel=07
 pkgdesc='Distribution-independent installer framework - latest git version'
 arch=('i686' 'x86_64')
 url="https://github.com/calamares/calamares"
