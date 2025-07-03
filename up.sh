@@ -1,6 +1,30 @@
 #!/bin/bash
-#set -e
+set -eo pipefail
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Youtube   : https://youtube.com/erikdubois
+# Github    : https://github.com/erikdubois
+# Github    : https://github.com/kirodubes
+# Github    : https://github.com/buildra
+# SF        : https://sourceforge.net/projects/kiro/files/
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black
+#tput setaf 1 = red
+#tput setaf 2 = green
+#tput setaf 3 = yellow
+#tput setaf 4 = dark blue
+#tput setaf 5 = purple
+#tput setaf 6 = cyan
+#tput setaf 7 = gray
+#tput setaf 8 = light blue
+##################################################################################################################
 
+# variables and functions
 workdir=$(pwd)
 
 # Colors
@@ -36,22 +60,15 @@ git add --all .
 echo "${green}Staging complete. Committing changes...${reset}"
 git commit -m "update"
 
-echo
-echo "${cyan}3. Pushing to GitHub...${reset}"
+# Push the local files to github
 
-if grep -q main .git/config; then
-    echo "${green}Branch: main${reset}"
-    git push -u origin main
-elif grep -q master .git/config; then
-    echo "${green}Branch: master${reset}"
-    git push -u origin master
-else
-    echo "${red}No main or master branch found in .git/config${reset}"
-fi
+branch=$(git rev-parse --abbrev-ref HEAD)
+git push -u origin "$branch"
 
 echo
-echo "${cyan}4. Script complete:${reset}"
-echo "${cyan}##############################################################${reset}"
-echo "${cyan}###################  $(basename "$0") done${reset}"
-echo "${cyan}##############################################################${reset}"
+tput setaf 6
+echo "##############################################################"
+echo "###################  $(basename $0) done"
+echo "##############################################################"
+tput sgr0
 echo
