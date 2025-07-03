@@ -27,37 +27,11 @@ set -eo pipefail
 # variables and functions
 workdir=$(pwd)
 
-# Colors
-cyan=$(tput setaf 6)
-green=$(tput setaf 2)
-red=$(tput setaf 1)
-reset=$(tput sgr0)
-
-echo "${cyan}1. Cleaning up build folders and old files...${reset}"
-
-[[ -d calamares/pkgbuild/src ]] && {
-    echo "${green}Removing src folder...${reset}"
-    rm -r calamares/pkgbuild/src
-}
-
-[[ -d calamares/pkgbuild/pkg ]] && {
-    echo "${green}Removing pkg folder...${reset}"
-    rm -r calamares/pkgbuild/pkg
-}
-
-for file in calamares/pkgbuild/calamares-3*; do
-    [[ -f "$file" ]] && {
-        echo "${green}Removing $file...${reset}"
-        rm "$file"
-    }
-done
-
-echo
-echo "${cyan}2. Backing up changes with Git...${reset}"
-
+# Below command will backup everything inside the project folder
 git add --all .
 
-echo "${green}Staging complete. Committing changes...${reset}"
+# Committing to the local repository with a message containing the time details and commit text
+
 git commit -m "update"
 
 # Push the local files to github
