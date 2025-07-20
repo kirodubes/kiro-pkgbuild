@@ -7,7 +7,7 @@ pkgdesc='Distribution-independent installer framework - latest git version'
 arch=('i686' 'x86_64')
 url="https://codeberg.org/erikdubois/calamares"
 license=('LGPL')
-conflicts=('calamares')
+conflicts=('calamares' 'calamares-git')
 provides=('calamares-next')
 depends=(
 	'boost-libs'
