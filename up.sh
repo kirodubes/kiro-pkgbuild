@@ -29,6 +29,10 @@ workdir=$(pwd)
 
 ##################################################################################################################
 
+echo "Remember to change the pkgbuild for calamares if needed"
+
+sleep 3
+
 # Below command will backup everything inside the project folder
 git add --all .
 
